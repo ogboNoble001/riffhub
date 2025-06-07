@@ -1,40 +1,40 @@
-const express = require('express');
-const axios = require('axios');
-const path = require('path');
-const cors = require('cors');
-require('dotenv').config();
+// server.js
+import express from 'express';
+import fetch from 'node-fetch';
+import dotenv from 'dotenv';
+import cors from 'cors';
+
+dotenv.config();
 
 const app = express();
+const port = process.env.PORT || 3000;
+
 app.use(cors());
-app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
 
-const clientId = process.env.SPOTIFY_CLIENT_ID;
-const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
+// Get Spotify Access Token
+app.get('/api/token', async (req, res) => {
+  const clientId = process.env.SPOTIFY_CLIENT_ID;
+  const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
 
-app.get('/auth/token', async (req, res) => {
+  const authString = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
+
   try {
-    const response = await axios.post(
-      'https://accounts.spotify.com/api/token',
-      'grant_type=client_credentials',
-      {
-        headers: {
-          Authorization: 'Basic ' + Buffer.from(`${clientId}:${clientSecret}`).toString('base64'),
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-      }
-    );
-    res.json(response.data);
+    const response = await fetch('https://accounts.spotify.com/api/token', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Basic ${authString}`,
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: 'grant_type=client_credentials',
+    });
+
+    const data = await response.json();
+    res.json(data);
   } catch (err) {
-    console.error('Token error:', err.response?.data || err.message);
     res.status(500).json({ error: 'Failed to fetch token' });
   }
 });
 
-// Optional: fallback to index.html for SPA routing
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
