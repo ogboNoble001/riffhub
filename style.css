@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=WDXL+Lubrifont+TC&display=swap');
+
+:root {
+  --search-bar-padding: 10px 15px;
+  --search-bar-border-radius: 5px;
+  --box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  --overlay-index: 400;
+}
+
+*, *::before, *::after {
+  outline: 0;
+  margin: 0;
+  padding: 0 0 0 0;
+}
+
+.flex-direction-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex-direction-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.lighter-font {
+  color: #0000009C;
+  font-weight: bold;
+}
+
+.logoTitle {
+  font-weight: bolder;
+  font-size: xx-large;
+}
+
+.fxdcnaic {
+  display: flex;
+  font-family: "WDXL Lubrifont TC", serif;
+  font-weight: 400;
+  font-style: normal;
+  flex-direction: column;
+  gap: -1rem;
+}
+
+.aic {
+  align-items: center;
+  gap: 1rem;
+}
+
+#link {
+  text-decoration: none;
+  color: darkblue;
+  font-style: italic;
+  font-weight: normal !important;
+}
+
+body {
+  margin: 0;
+  font-family: "WDXL Lubrifont TC", sans-serif;
+  background-color: #f4f4f4;
+  color: #000;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  backdrop-filter: grayscale(60%) blur(12px);
+  background-color: rgba(20, 20, 20, 0.4);
+  -webkit-backdrop-filter: grayscale(110%) blur(12px);
+  z-index: var(--overlay-index);
+  transition: all 0.3s ease-in-out;
+}
+.sideNav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: calc(var(--overlay-index) + 1000);
+  top: 0;
+  display: block;
+  color: black;
+  left: 0;
+  background-color: white;
+  overflow-x: hidden;
+  transition: all 0.3s ease-in-out;
+  padding-top: 6rem; /* Add some padding to the top */
+}
+
+.sideNav .ul-sideNav{
+  font-size: 1rem;
+  align-items: center;
+
+  padding: 15px; /* Add some padding to make the text more readable */
+}
+.ul-sideNav li{
+  list-style-type: none;
+  padding: 0.5rem;
+  font-family: "Poppins";
+  font-weight: bold;
+  font-size: 1rem;
+  align-self: flex-start;
+}
+
+.introduCtry {
+  position: relative;
+  z-index: calc(var(--overlay-index) - 100);
+  overflow: hidden;
+  background: url('/img_res/images.jpeg');
+  
+
+  color: #FFFFFF;
+  
+  padding: 2rem;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+}
+
+
+.introduCtry * {
+  position: relative;
+  z-index: calc(var(--overlay-index) - 100);
+}
+
+.introduCtry h2 {
+  color: black;
+  font-weight: lighter;
+  font-family: "WDXL Lubrifont TC", sans-serif;
+}
+.introduCtry {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  color: white;
+  padding: 2rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.introduCtry .bg-img {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover; /* or use cover if you'd prefer cropping */
+  filter: brightness(221%) contrast(275%) grayscale(63%) hue-rotate(261deg) invert(26%) saturate(54%) sepia(42%);
+  z-index: -2;
+}
+
+.introduCtry::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+}
+
+#musicNote {
+  color: white;
+}
+header {
+  align-items: center;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: var(--box-shadow);
+  z-index: 1500;
+  position: sticky;
+  top: 0;
+}
+
+.img {
+  width: 30px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 0.5rem;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  height: 30px;
+  border-radius: 50%;
+}
+
+header h1 {
+  font-size: xx-larger;
+  color: #000000;
+}
+
+.webTitle {
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.webTitle .under_w {
+  gap: 2rem;
+}
+
+.user_Icon {
+  height: 20px;
+}
+
+.logoTitle {
+  align-items: flex-start;
+}
+
+.navBar {
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.3rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.navBar span {
+  background: black;
+  width: 25px;
+  height: 4px;
+  border-radius: 8px;
+  display: block;
+  transition: all 0.3s ease-in-out;
+}
+.navBar span:nth-child(2) {
+  width: 15px;
+  align-self: flex-start;
+}
+
+.navBar span:nth-child(3) {
+  align-self: flex-end;
+  width: 15px;
+}
+
+.navBar.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navBar.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.navBar.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+  width:25px ;
+}
+.search-bar {
+  margin-top: 1rem;
+  width: 90vw;
+  gap: 1.5rem;
+  padding: 0.5rem;
+  background-color: #FFFFFF;
+  border-radius: 12rem;
+}
+
+.search-bar select,
+.search-bar input {
+  padding: var(--search-bar-padding);
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  font-family: 'Poppins';
+}
+
+.search-bar div {
+  align-items: center;
+}
+
+.search-bar input {
+  width: 40vw;
+}
+
+.search-bar select {
+  font-weight: bolder;
+}
+
+.search-bar i {
+  color: black;
+  font-size: larger;
+}
+
+.text-showCase p {
+  color: #FFFFFF;
+  line-height: 2rem;
+  white-space: pre-wrap !important;
+}
+
+.main {
+  padding: 1rem;
+}
+
+.uil-user {
+  font-size: x-large;
+}
+
+.tSong{
+  padding: 2rem;
+  box-shadow: var(--box-shadow);
+}
+
+
+.loading-dots::after {
+  content: '...';
+  animation: dots 1.2s steps(3, end) infinite;
+}
+
+@keyframes dots {
+  0%   { content: ''; }
+  33%  { content: '.'; }
+  66%  { content: '..'; }
+  100% { content: '...'; }
+}
+.write-up{
+  padding: 0.rem;
+  min-width: 200px;
+  font-family: "Poppins";
+  border-radius: 8px;
+  
+
+}
